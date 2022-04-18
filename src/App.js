@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter } from "react-router-dom";
+import Footer from "./components/Footer";
+import HeroSection from "./components/HeroSection";
+import InfoSection from "./components/InfoSection";
+import Navbar from "./components/Navbar";
+import infoData from "./data/InfoData";
+import sliderData from "./data/SliderData";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Navbar />
+      <HeroSection slides={sliderData} />
+      {infoData.map((item) => (
+        <InfoSection item={item} key={item.id} />
+      ))}
+      <Footer />
+    </HashRouter>
   );
 }
 
